@@ -3,6 +3,7 @@ import { UncontrolledTreeEnvironment, Tree, StaticTreeDataProvider } from 'react
 import longTree from "./jsonData.json";
 import "react-complex-tree/lib/style.css";
 import React, { createRef, useEffect, useState } from "react";
+import { useTabsContext } from '@chakra-ui/react';
 
 let unrelatedData = createRef();
 let relatedData = createRef();
@@ -21,8 +22,14 @@ function getItemsToExpand(treeData) {
   return items;
 }
 
-function DragAndDropTreeviewComponent(props) {
+function DragAndDropTreeviewComponent({index}) {
+  const { selectedIndex} = useTabsContext();
 
+  useEffect(() => {
+    if (selectedIndex === index) {
+      console.log('Hey my tab was just selected, index: ', index)
+    }
+  },[selectedIndex])
   return (
     <React.Fragment>
       <UncontrolledTreeEnvironment
