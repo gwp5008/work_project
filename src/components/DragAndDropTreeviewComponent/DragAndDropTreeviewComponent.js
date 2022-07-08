@@ -2,34 +2,26 @@ import './DragAndDropTreeviewComponent.css';
 import { UncontrolledTreeEnvironment, Tree, StaticTreeDataProvider } from 'react-complex-tree';
 import longTree from "./jsonData.json";
 import "react-complex-tree/lib/style.css";
-import React, { createRef, useEffect, useState } from "react";
-import { useTabsContext } from '@chakra-ui/react';
+import React, { useRef, useMemo} from "react";
 
-let unrelatedData = createRef();
-let relatedData = createRef();
-let itemsToExpand = getItemsToExpand(longTree);
-let returnableData = new StaticTreeDataProvider(longTree, (item, data) => ({ ...item, data }));
 
-function getItemsToExpand(treeData) {
-  let items = [];
-  const keys = Object.keys(treeData);
+function DragAndDropTreeviewComponent(props) {
+  const initialData = useMemo(() => ({ ...longTree }), [longTree])
+  const itemsToExpand = useMemo(() => {
+    let items = [];
+    const keys = Object.keys(initialData);
+  
+    keys.forEach((key, index) => {
+      if (index > 1) {
+        items[index - 2] = initialData[key].index;
+      }
+    });
+    return items;
+  }, [initialData]);
+  const returnableData = useMemo(() => new StaticTreeDataProvider(initialData, (item, data) => ({ ...item, data })), []);
+  const unrelatedData = useRef();
+  const relatedData = useRef();
 
-  keys.forEach((key, index) => {
-    if (index > 1) {
-      items[index - 2] = treeData[key].index;
-    }
-  });
-  return items;
-}
-
-function DragAndDropTreeviewComponent({index}) {
-  const { selectedIndex} = useTabsContext();
-
-  useEffect(() => {
-    if (selectedIndex === index) {
-      console.log('Hey my tab was just selected, index: ', index)
-    }
-  },[selectedIndex])
   return (
     <React.Fragment>
       <UncontrolledTreeEnvironment
