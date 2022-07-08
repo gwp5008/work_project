@@ -1,0 +1,102 @@
+{
+  "unrelatedData": {
+    "index": "unrelatedData",
+    "hasChildren": true,
+    "children": [
+      "child1",
+      "child2"
+    ],
+    "data": "Root item"
+  },
+  "relatedData": {
+    "index": "relatedData",
+    "hasChildren": true,
+    "children": [
+      "child6",
+      "child7"
+    ],
+    "data": "Root item"
+  },
+  "child1": {
+    "id": 1,
+    "index": "child1",
+    "hasChildren": true,
+    "children": [
+      "child4"
+    ],
+    "data": "Child item 1"
+  },
+  "child2": {
+    "id": 2,
+    "index": "child2",
+    "hasChildren": true,
+    "children": [
+      "child3"
+    ],
+    "data": "Child item 2"
+  },
+  "child3": {
+    "id": 3,
+    "index": "child3",
+    "hasChildren": true,
+    "children": [
+      "child5"
+    ],
+    "data": "Child item 3"
+  },
+  "child4": {
+    "id": 4,
+    "index": "child4",
+    "hasChildren": true,
+    "children": [],
+    "data": "Child item 4"
+  },
+  "child5": {
+    "id": 5,
+    "index": "child5",
+    "hasChildren": true,
+    "children": [],
+    "data": "Child item 5"
+  },
+  "child6": {
+    "id": 6,
+    "index": "child6",
+    "hasChildren": true,
+    "children": [
+      "child9"
+    ],
+    "data": "Child item 6"
+  },
+  "child7": {
+    "id": 7,
+    "index": "child7",
+    "hasChildren": true,
+    "children": [
+      "child8"
+    ],
+    "data": "Child item 7"
+  },
+  "child8": {
+    "id": 8,
+    "index": "child8",
+    "hasChildren": true,
+    "children": [
+      "child10"
+    ],
+    "data": "Child item 8"
+  },
+  "child9": {
+    "id": 9,
+    "index": "child9",
+    "hasChildren": true,
+    "children": [],
+    "data": "Child item 9"
+  },
+  "child10": {
+    "id": 10,
+    "index": "child10",
+    "hasChildren": true,
+    "children": [],
+    "data": "Child item 10"
+  }
+}
