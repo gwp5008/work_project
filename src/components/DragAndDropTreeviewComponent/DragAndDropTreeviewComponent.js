@@ -6,7 +6,7 @@ import React, { useRef, useMemo} from "react";
 
 
 function DragAndDropTreeviewComponent(props) {
-  const initialData = useMemo(() => ({ ...longTree }), [longTree])
+  const initialData = useMemo(() => (JSON.parse(JSON.stringify(longTree))), [longTree])
   const itemsToExpand = useMemo(() => {
     let items = [];
     const keys = Object.keys(initialData);
