@@ -28,7 +28,7 @@ function populateItemsToDisplay() {
   for (let i = 0; i < repositories.length; i++) {
     let tab = <Tab key={repositories[i].id}>{repositories[i].name}</Tab>;
     let tabPanel = <TabPanel key={repositories[i].id}>
-      <DragAndDropTreeviewComponent repo={repositories[i].name} key={repositories[i].id}></DragAndDropTreeviewComponent>
+      <DragAndDropTreeviewComponent index={i} repo={repositories[i].name} key={repositories[i].id}></DragAndDropTreeviewComponent>
     </TabPanel>;
     panelItems.push(tab);
     treeviews.push(tabPanel);
