@@ -1,14 +1,14 @@
-import './DragAndDropTreeviewComponent.css'
+import "./DragAndDropTreeviewComponent.css";
 import {
   UncontrolledTreeEnvironment,
   Tree,
-  StaticTreeDataProvider
-} from 'react-complex-tree'
-import 'react-complex-tree/lib/style.css'
-import React, { useRef, useState, useEffect } from 'react'
-import { useTabsContext, Spinner } from '@chakra-ui/react'
+  StaticTreeDataProvider,
+} from "react-complex-tree";
+import "react-complex-tree/lib/style.css";
+import React, { useRef, useState, useEffect } from "react";
+import { useTabsContext, Spinner } from "@chakra-ui/react";
 
-function DragAndDropTreeviewComponent ({ index }) {
+function DragAndDropTreeviewComponent({ index }) {
   const [itemsToExpand, setItemsToExpand] = useState([]);
   const [returnableData, setReturnableData] = useState(null);
   const { selectedIndex } = useTabsContext();
@@ -16,17 +16,17 @@ function DragAndDropTreeviewComponent ({ index }) {
   // Every time our index is selected, we can make an API call to get the latest data
   // And reset our tree here in this useEffect
   useEffect(() => {
-    let current = true
+    let current = true;
     if (selectedIndex === index) {
       (async () => {
         // Set this to null so we can display a loading spinner and clear the previous tree state
         setReturnableData(null);
-        const data = await fetch('/jsonData.json').then(res => res.json());
-        
-        // Simulate a longer api call, sleep for 200 ms
-        await new Promise(res => setTimeout(res, 200));
+        const data = await fetch("/jsonData.json").then((res) => res.json());
 
-        // Current checks effect frame in case multiple effects are fired so we aren't duplicating 
+        // Simulate a longer api call, sleep for 200 ms
+        // await new Promise(res => setTimeout(res, 200));
+
+        // Current checks effect frame in case multiple effects are fired so we aren't duplicating
         if (!current) {
           return;
         }
@@ -38,14 +38,14 @@ function DragAndDropTreeviewComponent ({ index }) {
           if (index > 1) {
             items[index - 2] = data[key].index;
           }
-        })
+        });
         setItemsToExpand(items);
 
         // Set our returnable data from the api call data
         setReturnableData(
           new StaticTreeDataProvider(data, (item, data) => ({
             ...item,
-            data
+            data,
           }))
         );
       })();
@@ -59,75 +59,77 @@ function DragAndDropTreeviewComponent ({ index }) {
   const unrelatedData = useRef();
   const relatedData = useRef();
 
-  return returnableData === null ? <Spinner/> : (
-      <UncontrolledTreeEnvironment
-        canDragAndDrop={true}
-        canDropOnItemWithChildren={true}
-        canReorderItems={true}
-        onDrop={() => {
-          // if (relatedData.current) {
-          console.log(JSON.stringify(returnableData.data.items))
-          // }
-        }}
-        dataProvider={returnableData}
-        getItemTitle={item => item.data}
-        // getItemTitle={(item) => (
-        //   <span key={item.data} style={{ fontSize: "24px" }}>
-        //     {item.data}
-        //   </span>
-        // )}
-        viewState={{
-          // ['tree-1']: {
-          //   focusedItem: "America",
-          //   selectedItems: ["America", "Europe", "Asia"],
-          //   expandedItems: ["Meals", "Drinks"]
-          // },
-          [`tree-1-${index}`]: {
-            expandedItems: itemsToExpand
-          },
-          [`tree-2-${index}`]: {
-            expandedItems: itemsToExpand
-          }
+  return returnableData === null ? (
+    <Spinner />
+  ) : (
+    <UncontrolledTreeEnvironment
+      canDragAndDrop={true}
+      canDropOnItemWithChildren={true}
+      canReorderItems={true}
+      onDrop={() => {
+        // if (relatedData.current) {
+        console.log(JSON.stringify(returnableData.data.items));
+        // }
+      }}
+      dataProvider={returnableData}
+      getItemTitle={(item) => item.data}
+      // getItemTitle={(item) => (
+      //   <span key={item.data} style={{ fontSize: "24px" }}>
+      //     {item.data}
+      //   </span>
+      // )}
+      viewState={{
+        // ['tree-1']: {
+        //   focusedItem: "America",
+        //   selectedItems: ["America", "Europe", "Asia"],
+        //   expandedItems: ["Meals", "Drinks"]
+        // },
+        [`tree-1-${index}`]: {
+          expandedItems: itemsToExpand,
+        },
+        [`tree-2-${index}`]: {
+          expandedItems: itemsToExpand,
+        },
+      }}
+    >
+      <div
+        style={{
+          display: "flex",
+          backgroundColor: "#D8DEE9",
+          justifyContent: "space-evenly",
+          alignItems: "baseline",
+          padding: "20px 0",
         }}
       >
         <div
           style={{
-            display: 'flex',
-            backgroundColor: '#D8DEE9',
-            justifyContent: 'space-evenly',
-            alignItems: 'baseline',
-            padding: '20px 0'
+            width: "28%",
+            backgroundColor: "white",
           }}
         >
-          <div
-            style={{
-              width: '28%',
-              backgroundColor: 'white'
-            }}
-          >
-            <Tree
-              ref={unrelatedData}
-              treeId={`tree-1-${index}`}
-              rootItem='unrelatedData'
-              treeLabel='Tree 1'
-            />
-          </div>
-          <div
-            style={{
-              width: '28%',
-              backgroundColor: 'white'
-            }}
-          >
-            <Tree
-              ref={relatedData}
-              treeId={`tree-2-${index}`}
-              rootItem='relatedData'
-              treeLabel='Tree 2'
-            />
-          </div>
+          <Tree
+            ref={unrelatedData}
+            treeId={`tree-1-${index}`}
+            rootItem="unrelatedData"
+            treeLabel="Tree 1"
+          />
         </div>
-      </UncontrolledTreeEnvironment>
-  )
+        <div
+          style={{
+            width: "28%",
+            backgroundColor: "white",
+          }}
+        >
+          <Tree
+            ref={relatedData}
+            treeId={`tree-2-${index}`}
+            rootItem="relatedData"
+            treeLabel="Tree 2"
+          />
+        </div>
+      </div>
+    </UncontrolledTreeEnvironment>
+  );
 }
 
-export default DragAndDropTreeviewComponent
+export default DragAndDropTreeviewComponent;

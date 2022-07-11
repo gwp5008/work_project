@@ -12,6 +12,7 @@
     "create-react-app": "^5.0.1",
     "framer-motion": "^6.4.1",
     "react": "^18.2.0",
+    "react-axios": "^2.0.6",
     "react-complex-tree": "^1.1.9",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
