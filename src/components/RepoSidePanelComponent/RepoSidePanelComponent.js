@@ -9,12 +9,31 @@ function RepoSidePanelComponent() {
 
   useEffect(() => {
     const loadData = async () => {
-      const url = "Some dummy URL";
-      const res = await fetch(url).then((res) => res.json());
+      window.localStorage.setItem(
+        "Repos",
+        JSON.stringify(await fetch("/repoData.json").then((res) => res.json()))
+      );
+      let res = JSON.parse(window.localStorage.getItem("Repos"));
 
       let tempPanelItems = [];
       let tempTreeviews = [];
+      let branchesSet = false;
+      console.log(res[0].name);
+      if (window.localStorage.getItem(res[0].name) !== undefined) {
+        branchesSet = true;
+      }
+
       for (let i = 0; i < res.length; i++) {
+        if (branchesSet === false) {
+          console.log("Inside branchesSet");
+          console.log("branchesSet = " + branchesSet);
+          window.localStorage.setItem(
+            res[i].name,
+            JSON.stringify(
+              await fetch("/branchData.json").then((res) => res.json())
+            )
+          );
+        }
         let tab = <Tab key={res[i].id}>{res[i].name}</Tab>;
         let tabPanel = (
           <TabPanel key={res[i].id}>

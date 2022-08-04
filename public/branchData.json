@@ -1,0 +1,140 @@
+{
+  "relatedData": {
+    "index": "relatedData",
+    "hasChildren": true,
+    "children": ["master"],
+    "data": "relatedData"
+  },
+  "unrelatedData": {
+    "index": "unrelatedData",
+    "hasChildren": true,
+    "children": ["--Empty--"],
+    "data": "unrelatedData"
+  },
+  "master": {
+    "id": 1,
+    "index": "master",
+    "hasChildren": true,
+    "children": ["delivery"],
+    "data": "BRANCH_HIERARCHY_GOES_HERE"
+  },
+  "delivery": {
+    "id": 2,
+    "index": "delivery",
+    "hasChildren": true,
+    "children": [
+      "PI3",
+      "PI4",
+      "PI5_21-4_151",
+      "PI6_21-5_152",
+      "PI7_22-1_153",
+      "PI8_22-2_154"
+    ],
+    "data": "delivery"
+  },
+  "PI3": {
+    "id": 4,
+    "index": "PI3",
+    "hasChildren": true,
+    "children": [],
+    "data": "PI3"
+  },
+  "PI4": {
+    "id": 5,
+    "index": "PI4",
+    "hasChildren": true,
+    "children": ["APE-3568", "TDM-IP"],
+    "data": "PI4"
+  },
+  "APE-3568": {
+    "id": 14,
+    "index": "APE-3568",
+    "hasChildren": true,
+    "children": [],
+    "data": "APE-3568"
+  },
+  "TDM-IP": {
+    "id": 15,
+    "index": "TDM-IP",
+    "hasChildren": true,
+    "children": [],
+    "data": "TDM-IP"
+  },
+  "PI5_21-4_151": {
+    "id": 6,
+    "index": "PI5_21-4_151",
+    "hasChildren": true,
+    "children": [],
+    "data": "PI5_21-4_151"
+  },
+  "PI6_21-5_152": {
+    "id": 7,
+    "index": "PI6_21-5_152",
+    "hasChildren": true,
+    "children": [],
+    "data": "PI6_21-5_152"
+  },
+  "PI7_22-1_153": {
+    "id": 8,
+    "index": "PI7_22-1_153",
+    "hasChildren": true,
+    "children": [],
+    "data": "PI7_22-1_153"
+  },
+  "PI8_22-2_154": {
+    "id": 9,
+    "index": "PI8_22-2_154",
+    "hasChildren": true,
+    "children": ["Wheatrod"],
+    "data": "PI8_22-2_154"
+  },
+  "Wheatrod": {
+    "id": 10,
+    "index": "Wheatrod",
+    "hasChildren": true,
+    "children": ["APE-3346"],
+    "data": "Wheatrod"
+  },
+  "APE-3346": {
+    "id": 11,
+    "index": "APE-3346",
+    "hasChildren": true,
+    "children": [],
+    "data": "APE-3346"
+  },
+  "--Empty--": {
+    "id": -1,
+    "index": "--Empty--",
+    "hasChildren": true,
+    "children": ["APE-1570", "APE-3327", "PI2", "TDM-IP_Freeway2.0"],
+    "data": "BRANCHES_WITHOUT_HIERARCHY_GO_HERE"
+  },
+  "APE-1570": {
+    "id": -2,
+    "index": "APE-1570",
+    "hasChildren": true,
+    "children": [],
+    "data": "APE-1570"
+  },
+  "APE-3327": {
+    "id": -3,
+    "index": "APE-3327",
+    "hasChildren": true,
+    "children": [],
+    "data": "APE-3327"
+  },
+  "PI2": {
+    "id": -4,
+    "index": "PI2",
+    "hasChildren": true,
+    "children": [],
+    "data": "PI2"
+  },
+  "TDM-IP_Freeway2.0": {
+    "id": -5,
+    "index": "TDM-IP_Freeway2.0",
+    "hasChildren": true,
+    "children": [],
+    "data": "TDM-IP_Freeway2.0"
+  }
+}
