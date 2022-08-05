@@ -25,7 +25,7 @@ function DragAndDropTreeviewComponent({ ...props }) {
         setReturnableData(null);
         let data = JSON.parse(window.localStorage.getItem(props.repo));
 
-        // console.log(JSON.stringify(data));
+        console.log(JSON.stringify(data));
         let keys = Object.keys(data);
 
         // Simulate a longer api call, sleep for 200 ms
